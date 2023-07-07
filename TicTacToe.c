@@ -17,8 +17,13 @@ void printWinner(char);
 
 int main(){
 	char winner = ' ';
+	char response;
 	
-	resetBoard();
+	do{
+		winner = ' ';
+		response = ' ';
+		resetBoard();
+	
 	
 	while(winner==' ' && checkFreeSpaces() != 0){
 		
@@ -39,6 +44,13 @@ int main(){
 	
 	printBoard();
 	printWinner(winner);
+	printf("\nWould you like to play again? (Y|N): ");
+	scanf("%c");
+	scanf("%c", &response);
+	response = toupper(response);
+	}while(response == 'Y');
+	
+	printf("Thanks For Playing!!");
 	
 	return 0;
 }
@@ -141,7 +153,7 @@ char checkWinner(){
 
 void printWinner(char winner){
 	if(winner == PLAYER){
-		printf("YPU WIN!!");
+		printf("YOU WIN!!");
 	}else if(winner == COMPUTER){
 		printf("YOU LOSE!!");
 	}else{
